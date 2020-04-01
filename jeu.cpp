@@ -3,6 +3,8 @@
 #include <iostream>
 #include <assert.h>
 
+extern const char terrain_1[17][21];
+
 Fantome::Fantome()
 {
     posX = 0; posY = 0;
@@ -148,28 +150,16 @@ bool Jeu::niveau2()             // Niveau 2 (Pour passer au niveau 2, il faut te
 	list<Fantome>::iterator itFantome;
 	Set_Niveau(HARD);
     Get_NbJoueur();
-         const char terrain_defaut[17][21] = {
-            "....................",
-            "....................",
-            "####################",
-            "#...../..##.....#/.#",
-            "#.###....##...###..#",
-            "#...#....##.../....#",
-            "#...../...//.......|",
-            "#.//...##...#..//..#",
-            "#../#*.#....#/..//.#",
-            "#####..#....#...####",
-            "#......#..###...#..#",
-            "#......#....#.../..#",
-            "#..//....*.....*...#",
-            "#...//../..../../..#",
-            "#....##......##..//#",
-            "#.../.#.../..#./../#",
-            "####################"
-        };
-
+    char terrain_defaut[17][21];
+    
         largeur = 20;
         hauteur = 17;
+
+        for(int i=0;i<hauteur;i++) {
+            for(int j=0;j<largeur;j++) {
+                terrain_defaut[i][j] = terrain_1[i][j];
+            }
+        }
 
         terrain = new Case[largeur*hauteur];
 
