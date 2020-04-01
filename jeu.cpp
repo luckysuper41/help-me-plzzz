@@ -4,6 +4,10 @@
 #include <assert.h>
 
 extern const char terrain_1[17][21];
+extern const char terrain_2[17][21];
+extern const char terrain_3[17][21];
+extern const char terrain_4[17][21];
+extern const char terrain_fin[17][21];
 
 Fantome::Fantome()
 {
@@ -101,10 +105,16 @@ bool Jeu::init()             // Niveau 1 (EASY Mode)
 	Set_Niveau(EASY);
 	Get_NbJoueur();
 
-        const char terrain_defaut[17][21] = {terrain_1[17][21]};
+        char terrain_defaut[17][21];
 
         largeur = 20;
         hauteur = 17;
+
+        for(int i=0;i<hauteur;i++) {
+            for(int j=0;j<largeur;j++) {
+                terrain_defaut[i][j] = terrain_fin[i][j];
+            }
+        }
 
         terrain = new Case[largeur*hauteur];
 
@@ -151,13 +161,13 @@ bool Jeu::niveau2()             // Niveau 2 (Pour passer au niveau 2, il faut te
 	Set_Niveau(HARD);
     Get_NbJoueur();
     char terrain_defaut[17][21];
-    
+
         largeur = 20;
         hauteur = 17;
 
         for(int i=0;i<hauteur;i++) {
             for(int j=0;j<largeur;j++) {
-                terrain_defaut[i][j] = terrain_1[i][j];
+                terrain_defaut[i][j] = terrain_3[i][j];
             }
         }
 
