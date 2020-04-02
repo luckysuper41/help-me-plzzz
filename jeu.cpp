@@ -9,8 +9,6 @@ extern const char terrain_3[17][21];
 extern const char terrain_4[17][21];
 extern const char terrain_fin[17][21];
 
-
-// Fantome
 Fantome::Fantome()
 {
     posX = 0; posY = 0;
@@ -27,8 +25,6 @@ int Fantome::getPosY() const
     return posY;
 }
 
-
-//Pacman
 Pacman::Pacman()
 {
     PosPacX =0; PosPacY =0;
@@ -43,6 +39,16 @@ int Pacman::getPosPacX() const
 int Pacman::getPosPacY() const
 {
     return PosPacY;
+}
+
+void Pacman::SetPosPacX(const int x)
+{
+    PosPacX = x;
+}
+
+void Pacman::SetPosPacY(const int y)
+{
+    PosPacY = y;
 }
 
 int Pacman::Get_PointVie() const
@@ -69,7 +75,15 @@ Jeu::~Jeu()
         delete[] terrain;
 }
 
+void Jeu::set_Largeur(const int l)
+{
+    largeur = l;
+}
 
+void Jeu::set_Hauteur(const int h)
+{
+    hauteur = h;
+}
 void Jeu::Pacman_Init(Pacman *p)
 {
     int x,y;
@@ -77,14 +91,14 @@ void Jeu::Pacman_Init(Pacman *p)
 
     do {
         x = rand()%largeur;
-        y = rand()%hauteur;
+        y = rand()%hauteur+3;
     } while (terrain[y*largeur+x]!=VIDE);
 
     p->PosPacX = x;
     p->PosPacY = y;
 }
 
-bool Jeu::init()            // Niveau 1
+bool Jeu::init()             // Niveau 1 (EASY Mode)
 {
 	int x, y;
 	list<Fantome>::iterator itFantome;
@@ -114,8 +128,6 @@ bool Jeu::init()            // Niveau 1
                     terrain[y*largeur+x] = GOMME;
                 else if (terrain_defaut[y][x]=='|')
                     terrain[y*largeur+x] = PORTE;
-                else if (terrain_defaut[y][x]==';')
-                    terrain[y*largeur+x] = COVER;
                 else terrain[y*largeur+x] = BONUS;
 
         fantomes.resize(3);
@@ -124,7 +136,7 @@ bool Jeu::init()            // Niveau 1
         {
             do {
                 x = rand()%largeur;
-                y = rand()%hauteur;
+                y = rand()%hauteur + 3;
             } while (terrain[y*largeur+x]!=VIDE);
 
             itFantome->posX = x;
@@ -202,15 +214,13 @@ bool Jeu::niveau2()             // Niveau 2 (Pour passer au niveau 2, il faut te
                     terrain[y*largeur+x] = GOMME;
                 else if (terrain_defaut[y][x]=='|')
                     terrain[y*largeur+x] = PORTE;
-                else if (terrain_defaut[y][x]==';')
-                    terrain[y*largeur+x] = COVER;
                 else terrain[y*largeur+x] = BONUS;
 
         for (itFantome=fantomes.begin(); itFantome!=fantomes.end(); itFantome++)
         {
             do {
                 x = rand()%largeur;
-                y = rand()%hauteur;
+                y = rand()%hauteur + 3;
             } while (terrain[y*largeur+x]!=VIDE);
 
             itFantome->posX = x;

@@ -59,11 +59,6 @@ PacmanWindow::PacmanWindow(QWidget *pParent, Qt::WindowFlags flags):QFrame(pPare
         cout<<"Impossible d'ouvrir bonus.bmp"<<endl;
         exit(-1);
     }
-    if (pixmapCover.load("./data/cover.bmp")==false)
-    {
-        cout<<"Impossible d'ouvrir cover.bmp"<<endl;
-        exit(-1);
-    }
 
     // Ajouter le button "AJOUTER FANTOME"
     PacmanButton *btA = new PacmanButton("1 Joueur",this);
@@ -110,8 +105,6 @@ void PacmanWindow::paintEvent(QPaintEvent *)
                 painter.drawPixmap(x*largeurCase, y*hauteurCase, pixmapPorte);
             else if(jeu.getCase(x,y) == BONUS)
                 painter.drawPixmap(x*largeurCase, y*hauteurCase, pixmapBonus);
-            else if(jeu.getCase(x,y) == COVER)
-                painter.drawPixmap(x*largeurCase, y*hauteurCase, pixmapCover);
     // Dessine les fantomes
     for (itFantome=jeu.fantomes.begin(); itFantome!=jeu.fantomes.end(); itFantome++)
         {painter.drawPixmap(itFantome->getPosX()*largeurCase, itFantome->getPosY()*hauteurCase, pixmapFantome);}
@@ -243,11 +236,10 @@ void PacmanWindow :: Handle_perdu_MSG()
     QString ABC;
     string text;
     QMessageBox msg;
-    text = "Hey guy";
+    text = "Vinh Hoa";
     ABC = QString::fromLocal8Bit(text.c_str());
     if(jeu.Pacman1.Get_PointVie() == 0 || jeu.Pacman2.Get_PointVie() == 0)
     {
-        msg.setInformativeText(ABC);
         msg.setText("Vous avez perdu, essayez-vous ?");
 
         QPushButton *btn_rejouer = msg.addButton("Rejouer", QMessageBox::AcceptRole);
