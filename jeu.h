@@ -4,7 +4,7 @@
 #include <list>
 using namespace std;
 
-typedef enum {VIDE, MUR, GOMME, PORTE, BONUS} Case;
+typedef enum {VIDE, MUR, GOMME, PORTE, BONUS, COVER} Case;
 typedef enum {GAUCHE, DROITE, HAUT, BAS} Direction;
 
 class Jeu;
@@ -36,9 +36,7 @@ class Pacman                // Creer un class Pacman pour 2 joueurs
     // Retourner les dimenssions des pacmans
     int getPosPacX() const;
     int getPosPacY() const;
-    // Mettre les dimenssions des pacmans
-    void SetPosPacX(const int);
-    void SetPosPacY(const int);
+
     // Retourner Point de Vie
     int Get_PointVie() const;
     // Mettre Point de Vie
@@ -76,10 +74,6 @@ class Jeu
     // Retourne les dimensions (en nombre de cases)
     int getNbCasesX() const;
     int getNbCasesY() const;
-
-    // Set Largeur et Hauteur du jeu
-    void set_Largeur(const int);
-    void set_Hauteur(const int);
 
     // Retourne la case à une position donnée
     Case getCase(int, int) const;

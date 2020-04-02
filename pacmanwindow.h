@@ -10,13 +10,13 @@ class PacmanWindow : public QFrame
   friend class Fantome;
   protected:
     Jeu jeu;
-    QPixmap pixmapPacman1,pixmapPacman2, pixmapFantome, pixmapMur, pixmapGomme, pixmapPorte, pixmapPointVie, pixmapBonus;
+    QPixmap pixmapPacman1,pixmapPacman2, pixmapFantome, pixmapMur, pixmapGomme, pixmapPorte, pixmapPointVie, pixmapBonus, pixmapCover;
 
   public:
     PacmanWindow(QWidget *pParent=0, Qt::WindowFlags flags=0);
     void handleTimer();
-    void Ajouter_Button();
-    void Supprimer_Button();
+ //   void Ajouter_Button();
+ //   void Supprimer_Button();
     void Handle_perdu_MSG();
     void Handle_Gagner_MSG();
     void Handle_Continuer_MSG();
@@ -25,8 +25,6 @@ class PacmanWindow : public QFrame
     void Button_Continuer();
     void Mode_1_Joueur();
     void Mode_2_Joueur();
-    void Button_OK();
-    void Button_Cancle();
 
   protected:
     void paintEvent(QPaintEvent *);
