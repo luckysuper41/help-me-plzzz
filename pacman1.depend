@@ -11480,14 +11480,14 @@
 
 1505728630 c:\users\buidu\onedrive\desktop\new folder\toi deo nho gi c++\qtbase-small-5.6.3-x64\include\qtwidgets\qtwidgetsversion.h
 
-1585644699 c:\users\buidu\onedrive\desktop\new folder\toi deo nho gi c++\pacman-with-qt-x64\jeu.h
+1585839056 c:\users\buidu\onedrive\desktop\new folder\toi deo nho gi c++\pacman-with-qt-x64\jeu.h
 	<list>
 
-1585688872 source:c:\users\buidu\onedrive\desktop\new folder\toi deo nho gi c++\pacman-with-qt-x64\pacmanwindow.cpp
+1585839953 source:c:\users\buidu\onedrive\desktop\new folder\toi deo nho gi c++\pacman-with-qt-x64\pacmanwindow.cpp
 	<iostream>
 	"pacmanwindow.h"
 
-1585768842 source:c:\users\buidu\onedrive\desktop\new folder\toi deo nho gi c++\pacman-with-qt-x64\jeu.cpp
+1585839879 source:c:\users\buidu\onedrive\desktop\new folder\toi deo nho gi c++\pacman-with-qt-x64\jeu.cpp
 	"jeu.h"
 	"maps.h"
 	<iostream>

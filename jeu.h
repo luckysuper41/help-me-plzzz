@@ -6,7 +6,6 @@ using namespace std;
 
 typedef enum {VIDE, MUR, GOMME, PORTE, BONUS} Case;
 typedef enum {GAUCHE, DROITE, HAUT, BAS} Direction;
-typedef enum {EASY,HARD} NiveauDif;
 
 class Jeu;
 
@@ -53,7 +52,7 @@ class Jeu
     Case *terrain;
     int largeur, hauteur;           // Nombre de cases en largeur et en hauteur
     int NbGomme;                    // Nombre de gommes dans la terrain
-    NiveauDif niveau;               // Niveau du jeu
+    int niveau;               // Niveau du jeu
     int NbJoueur;                   // Nombre de joueurs
 
   public:
@@ -120,10 +119,10 @@ class Jeu
     void Handle_Gomme(Pacman );
 
     // Set niveau du jeu
-    void Set_Niveau(NiveauDif);
+    void Set_Niveau(int);
 
     // Get niveau du jeu
-    NiveauDif Get_Niveau();
+    int Get_Niveau();
 
 };
 

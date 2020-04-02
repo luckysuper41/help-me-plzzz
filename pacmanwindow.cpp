@@ -254,9 +254,9 @@ void PacmanWindow :: Handle_perdu_MSG()
 void PacmanWindow :: Handle_Gagner_MSG()
 {
     QMessageBox msg;
-    if((jeu.Verifier_Gagner(jeu.Pacman1) == true || jeu.Verifier_Gagner(jeu.Pacman2) == true )&& jeu.Get_Niveau() == EASY)
+    if((jeu.Verifier_Gagner(jeu.Pacman1) == true || jeu.Verifier_Gagner(jeu.Pacman2) == true )&& jeu.Get_Niveau() < 5)
     {
-        msg.setText("Bien Joue, Continuez 'HARD-MODE' ?");
+        msg.setText("Bien Joue, Continuez Niveau Suivant ?");
 
         QPushButton *btn_continuer = msg.addButton("OK", QMessageBox::AcceptRole);
         connect(btn_continuer, QPushButton::clicked, this, PacmanWindow::Button_Continuer);
@@ -270,7 +270,7 @@ void PacmanWindow :: Handle_Gagner_MSG()
 void PacmanWindow :: Handle_Continuer_MSG()
 {
     QMessageBox msg;
-    if((jeu.Verifier_Gagner(jeu.Pacman1) == true || jeu.Verifier_Gagner(jeu.Pacman1) == true )&& jeu.Get_Niveau() == HARD)
+    if(jeu.Get_Niveau() > 4)
     {
         msg.setText("Felicitation, Vous avez gagner ");
 

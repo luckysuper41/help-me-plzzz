@@ -65,7 +65,7 @@ Jeu::Jeu()
     terrain = NULL;
     largeur = 0; hauteur = 0;
     NbGomme = 0;
-    niveau = EASY;
+    niveau = 1;
     NbJoueur = 1;
 }
 
@@ -102,7 +102,7 @@ bool Jeu::init()             // Niveau 1 (EASY Mode)
 {
 	int x, y;
 	list<Fantome>::iterator itFantome;
-	Set_Niveau(EASY);
+	Set_Niveau(1);
 	Get_NbJoueur();
 
         char terrain_defaut[17][21];
@@ -112,7 +112,7 @@ bool Jeu::init()             // Niveau 1 (EASY Mode)
 
         for(int i=0;i<hauteur;i++) {
             for(int j=0;j<largeur;j++) {
-                terrain_defaut[i][j] = terrain_fin[i][j];
+                terrain_defaut[i][j] = terrain_1[i][j];
             }
         }
 
@@ -158,17 +158,48 @@ bool Jeu::niveau2()             // Niveau 2 (Pour passer au niveau 2, il faut te
 {
     int x, y;
 	list<Fantome>::iterator itFantome;
-	Set_Niveau(HARD);
+	Set_Niveau(Get_Niveau() + 1); // Augmenter le niveau
     Get_NbJoueur();
     char terrain_defaut[17][21];
 
         largeur = 20;
         hauteur = 17;
 
-        for(int i=0;i<hauteur;i++) {
-            for(int j=0;j<largeur;j++) {
-                terrain_defaut[i][j] = terrain_3[i][j];
+        switch(Get_Niveau()) // Pour choisir le niveau
+        {
+        case 2:
+            for(int i=0;i<hauteur;i++) {        // Utiliser boucle for pour inserser le terrain de maps
+                for(int j=0;j<largeur;j++) {
+                    terrain_defaut[i][j] = terrain_2[i][j];
+                }
             }
+            fantomes.resize(7);
+            break;
+        case 3:
+            for(int i=0;i<hauteur;i++) {
+                for(int j=0;j<largeur;j++) {
+                    terrain_defaut[i][j] = terrain_3[i][j];
+                }
+            }
+            fantomes.resize(8);
+            break;
+        case 4:
+            for(int i=0;i<hauteur;i++) {
+                for(int j=0;j<largeur;j++) {
+                    terrain_defaut[i][j] = terrain_4[i][j];
+                }
+            }
+            fantomes.resize(9);
+            break;
+        case 5:
+            for(int i=0;i<hauteur;i++) {
+                for(int j=0;j<largeur;j++) {
+                    terrain_defaut[i][j] = terrain_fin[i][j];
+                }
+            }
+            fantomes.resize(0);
+            break;
+
         }
 
         terrain = new Case[largeur*hauteur];
@@ -184,8 +215,6 @@ bool Jeu::niveau2()             // Niveau 2 (Pour passer au niveau 2, il faut te
                 else if (terrain_defaut[y][x]=='|')
                     terrain[y*largeur+x] = PORTE;
                 else terrain[y*largeur+x] = BONUS;
-
-        fantomes.resize(7);
 
         for (itFantome=fantomes.begin(); itFantome!=fantomes.end(); itFantome++)
         {
@@ -352,12 +381,12 @@ void Jeu :: Handle_Bonus(Pacman *p)
         return false;
  }
 
- void Jeu::Set_Niveau(NiveauDif n)
+ void Jeu::Set_Niveau(int n)
  {
      niveau = n;
  }
 
- NiveauDif Jeu::Get_Niveau()
+ int Jeu::Get_Niveau()
  {
      return niveau;
  }
