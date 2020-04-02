@@ -116,13 +116,17 @@ void PacmanWindow::paintEvent(QPaintEvent *)
 	if (jeu.Get_NbJoueur()==2)
         painter.drawPixmap(jeu.Pacman2.getPosPacX()*largeurCase, jeu.Pacman2.getPosPacY()*hauteurCase, pixmapPacman2);
 
+    // Dessine Instruction
+    painter.drawText(100,23,"Touches Flechees");
+    painter.drawText(100,53,"Touches A,W,S,D");
+
 	// Dessine PointdeVie
 
             // Dans le cas 1 joueur
     painter.drawText(330,23,"Joueur 1 :");
 	for (int i =1; i <= jeu.Pacman1.Get_PointVie();i++)
     {
-        painter.drawPixmap(400+(i-1)*40,5,40,20,pixmapPointVie);
+        painter.drawPixmap(400+(i-1)*40,10,40,20,pixmapPointVie);
     }
             // Dans le cas 2 joueurs
     if (jeu.Get_NbJoueur()==2)
@@ -130,7 +134,7 @@ void PacmanWindow::paintEvent(QPaintEvent *)
         painter.drawText(330,50,"Joueur 2 :");
         for (int j =1; j <= jeu.Pacman2.Get_PointVie();j++)
         {
-            painter.drawPixmap(400+(j-1)*40,30,40,20,pixmapPointVie);
+            painter.drawPixmap(400+(j-1)*40,35,40,20,pixmapPointVie);
         }
     }
 }
